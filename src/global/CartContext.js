@@ -6,7 +6,17 @@ export const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
   const addToCart = (product, quantity) => {
-    setCart([...cart, { id: cart.length + 1, product, quantity }]);
+    
+    const existingItemIndex = cart.findIndex(item => item.product.ProductID === product.ProductID);
+    
+    if (existingItemIndex !== -1) {
+      
+      const updatedCart = [...cart];
+      updatedCart[existingItemIndex].quantity += quantity;
+      setCart(updatedCart);
+    } else {
+      setCart([...cart, { id: cart.length + 1, product, quantity }]);
+    }
   };
 
   const removeFromCart = (id) => {

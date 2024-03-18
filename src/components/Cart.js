@@ -37,6 +37,7 @@ const Cart = () => {
           <div className="total">
             <p>Total: ${calculateTotal()}.00</p>
           </div>
+          <button className="clear-cart-btn" onClick={clearCart}>Clear Cart</button>
           <button className="checkout-btn" onClick={handleCheckout}>Checkout</button>
         </>
       )}
